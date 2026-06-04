@@ -62,9 +62,9 @@ The dev server only serves static files — there is no build step and nothing t
 
 ## Deploy
 
-The app deploys to **GitHub Pages** automatically.
+The app deploys to **GitHub Pages** from the `main` branch (Settings → Pages → *Deploy from a branch* → `main` / root). It is live at **https://tanasel.github.io/ish-english-quests/**.
 
-- `.github/workflows/deploy.yml` runs on every push to `main` and publishes the repo as a Pages site (atomic deploy, so there is no 404 window during a rebuild).
+- Every push to `main` republishes the site — it is plain static files, so there is no build step.
 - `.nojekyll` is present so Pages serves the files as-is.
 
 Sharing a quest does **not** require deployment:
