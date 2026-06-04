@@ -25,5 +25,32 @@
     "mode": "escape",
     "theme": "detective",
     "file": "orators-sealed-archive.json"
+  },
+  {
+    "id": "romeo-and-juliet-escape",
+    "title": "The Sealed Tomb of the Capulets",
+    "unit": "Romeo and Juliet — Shakespeare's language, characters and plot",
+    "grade": "Year 9 (MYP 4)",
+    "mode": "escape",
+    "theme": "castle",
+    "file": "romeo-and-juliet-escape.json"
+  },
+  {
+    "id": "punctuation-power-hunt",
+    "title": "Punctuation Power: The Starbase Code",
+    "unit": "Punctuation and grammar — full stops, commas, apostrophes, sentence types, capital letters",
+    "grade": "Year 7 (MYP 1)",
+    "mode": "hunt",
+    "theme": "space",
+    "file": "punctuation-power-hunt.json"
+  },
+  {
+    "id": "gothic-writing-escape",
+    "title": "The Whispering Library",
+    "unit": "Gothic and descriptive writing — atmosphere, imagery, sensory language and powerful word choice",
+    "grade": "Year 10 (MYP 5)",
+    "mode": "escape",
+    "theme": "library",
+    "file": "gothic-writing-escape.json"
   }
 ]

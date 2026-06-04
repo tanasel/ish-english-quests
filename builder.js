@@ -84,10 +84,15 @@
     const wrap = el("div", "builder-shell");
     const head = el("header", "quest-head builder-head");
     const nav = el("nav", "top-links");
-    nav.append(linkButton("index.html", "Quest library", "top-link"), linkButton("play.html", "Open player", "top-link"));
+    nav.append(linkButton("index.html", "Quest library", "top-link"), linkButton("play.html", "Open player", "top-link"), linkButton("how-to.html", "How to", "top-link"));
+    const brandPlate = el("div", "brand-plate");
+    const brandLogo = el("img", "brand-plate__img");
+    brandLogo.src = "assets/ish-logo.png";
+    brandLogo.alt = "The International School of The Hague";
+    brandPlate.appendChild(brandLogo);
     const kicker = el("p", "kicker", "Quest Forge");
     const h = el("h1", "wordmark quest-title", title);
-    head.append(nav, kicker, h, readingControls());
+    head.append(nav, brandPlate, kicker, h, readingControls());
     wrap.append(head, body);
     return wrap;
   }

@@ -150,13 +150,18 @@
       const build = el("a", "top-link", "Build a quest");
       build.href = "build.html";
       nav.append(home, build);
+      const brandPlate = el("div", "brand-plate");
+      const brandLogo = el("img", "brand-plate__img");
+      brandLogo.src = "assets/ish-logo.png";
+      brandLogo.alt = "The International School of The Hague";
+      brandPlate.appendChild(brandLogo);
       const kicker = el("p", "kicker", pack.meta.mode === "hunt" ? "Treasure hunt" : "Escape room");
       const h = el("h1", "wordmark quest-title", pack.meta.title);
       const meta = el("p", "lede", [pack.meta.unit, pack.meta.year, pack.meta.subject].filter(Boolean).join(" · "));
       const score = el("p", "score-line", scoreText());
       score.id = "scoreLine";
       score.setAttribute("aria-live", "polite");
-      head.append(nav, kicker, h, meta, score, renderControls());
+      head.append(nav, brandPlate, kicker, h, meta, score, renderControls());
       return head;
     }
 
@@ -442,6 +447,10 @@
       win.appendChild(el("p", "score-line", scoreText() + " · elapsed " + formatElapsed(progress.startedAt, progress.updatedAt)));
       if (pack.settings.certificate) {
         const cert = el("section", "certificate");
+        const certLogo = el("img", "certificate__logo");
+        certLogo.src = "assets/ish-logo.png";
+        certLogo.alt = "The International School of The Hague";
+        cert.appendChild(certLogo);
         cert.appendChild(el("p", "certificate__kicker", "International School of The Hague · English Quest"));
         cert.appendChild(el("h2", "certificate__title", "Quest Certificate"));
         const label = el("label", "field certificate__name");

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-font="standard" data-contrast="normal">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A simple, step-by-step guide for teachers: build an English escape room or treasure hunt with the help of any AI." />
+  <title>How to build a quest · Quest Forge</title>
+  <script>
+    (function () {
+      try {
+        var raw = localStorage.getItem("ishQuest.prefs.v1");
+        var p = raw ? JSON.parse(raw) : {};
+        var theme = p.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.font = p.font === "dyslexic" ? "dyslexic" : "standard";
+        document.documentElement.dataset.contrast = p.contrast ? "high" : "normal";
+        document.documentElement.dataset.size = p.biggerText ? "big" : "normal";
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght@9..144,600..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="styles.css?v=1" />
+  <script src="config.js?v=1"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the guide</a>
+
+  <header class="masthead launcher-head">
+    <div class="masthead__inner">
+      <div class="masthead__brand">
+        <div class="brand-plate"><img class="brand-plate__img" src="assets/ish-logo.png" alt="The International School of The Hague" /></div>
+        <p class="kicker">ISH English Department · Teacher guide</p>
+        <h1 class="wordmark">How to build a quest</h1>
+        <p class="lede">Turn any unit or task into an escape room or treasure hunt — in about five minutes, with help from an AI you already use.</p>
+      </div>
+      <div class="masthead__actions">
+        <a class="btn btn--primary wax-btn" href="build.html">Build a quest</a>
+        <a class="btn btn--ghost" href="index.html">Quest library</a>
+        <button type="button" class="btn btn--ghost" data-pref="theme">Dark mode</button>
+        <button type="button" class="btn btn--ghost" data-pref="font" aria-pressed="false">Easy-reading</button>
+        <button type="button" class="btn btn--ghost" data-pref="biggerText" aria-pressed="false">Bigger text</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout" id="main">
+    <p class="story-text">There is <strong>no app to install</strong>, <strong>no login</strong>, and <strong>no cost</strong>. You write a short description, an AI writes the puzzles, and you share a link. That is the whole idea.</p>
+
+    <h2 class="section-title">The three steps</h2>
+    <ol class="howto-steps">
+      <li class="scroll-card">
+        <span class="howto-badge">1</span>
+        <h3 class="section-title">Describe</h3>
+        <p class="story-text">Tell the builder your unit or task — for example, “Macbeth, Act 1”.</p>
+      </li>
+      <li class="scroll-card">
+        <span class="howto-badge">2</span>
+        <h3 class="section-title">Paste into your AI</h3>
+        <p class="story-text">Copy the ready-made prompt into ChatGPT, Gemini, or Claude. Paste its reply back.</p>
+      </li>
+      <li class="scroll-card">
+        <span class="howto-badge">3</span>
+        <h3 class="section-title">Play &amp; share</h3>
+        <p class="story-text">Check it looks right, then send the link to your class.</p>
+      </li>
+    </ol>
+
+    <section class="howto-section scroll-card">
+      <h2 class="section-title">Step 1 · Open the builder</h2>
+      <p class="story-text">Click <strong>Build a quest</strong> (top of this page). You will see a short, numbered form: <em>Step 1 of 4</em>.</p>
+    </section>
+
+    <section class="howto-section scroll-card">
+      <h2 class="section-title">Step 2 · Describe your quest</h2>
+      <ul class="howto-list">
+        <li>In the big box, type your <strong>unit or topic</strong>. You can also paste a poem, an extract, or your task sheet.</li>
+        <li>Choose <strong>Escape room</strong> (solve locks in order) or <strong>Treasure hunt</strong> (collect letters to spell a word).</li>
+        <li>Pick the <strong>year group</strong>, the <strong>number of stations</strong> (5 is a good start), and the <strong>difficulty</strong>.</li>
+        <li>Leave “Let the AI choose” on if you are not sure which puzzles to use.</li>
+      </ul>
+      <p class="howto-callout">Only the description is required. Everything else already has a sensible setting. Click <strong>Next</strong>.</p>
+    </section>
+
+    <section class="howto-section scroll-card">
+      <h2 class="section-title">Step 3 · Get your prompt</h2>
+      <p class="story-text">The builder writes a prompt for you. Click the big <strong>Copy the prompt</strong> button. It says <strong>Copied ✓</strong> when it is done.</p>
+    </section>
+
+    <section class="howto-section scroll-card">
+      <h2 class="section-title">Step 4 · Paste it into your AI</h2>
+      <ul class="howto-list">
+        <li>Open your school AI — <strong>ChatGPT</strong>, <strong>Gemini</strong>, or <strong>Claude</strong>. (There are quick links on the builder page.)</li>
+        <li><strong>Paste</strong> the prompt and press enter.</li>
+        <li>Wait a few seconds. Then <strong>copy the whole reply</strong> the AI gives you — even if it has extra words around it.</li>
+      </ul>
+    </section>
+
+    <section class="howto-section scroll-card">
+      <h2 class="section-title">Step 5 · Bring the reply back</h2>
+      <p class="story-text">Back in the builder, click <strong>I have the reply</strong>, paste it into the box, and click <strong>Build my quest</strong>. You will see one of three results:</p>
+      <ul class="howto-list">
+        <li>🟢 <strong>Green</strong> — all good. Go to the preview.</li>
+        <li>🟡 <strong>Amber</strong> — built, with a few tidy-ups. The app lists what it cleaned up. This is normal.</li>
+        <li>🔴 <strong>Red</strong> — it could not read the reply. Click <strong>Copy a fix-up prompt</strong>, paste that back to the AI, and try again. You are never stuck.</li>
+      </ul>
+    </section>
+
+    <section class="howto-section scroll-card">
+      <h2 class="section-title">Step 6 · Check and tidy</h2>
+      <p class="story-text">The preview shows every station. Click a station to read it the way a student will. To change a clue or an answer, just click the text and edit it. If one station looks broken, click <strong>Remove station</strong>.</p>
+    </section>
+
+    <section class="howto-section scroll-card">
+      <h2 class="section-title">Step 7 · Share with your class</h2>
+      <ul class="howto-list">
+        <li>Click <strong>🔗 Share link</strong> and then <strong>Copy share link</strong>.</li>
+        <li>Paste that link into <strong>Google Classroom</strong>, an email, or onto the board.</li>
+        <li>Students click the link and play straight away — on a laptop, tablet, or phone. No login needed.</li>
+        <li>Prefer a file? Click <strong>⬇ Export</strong> to download the quest, and share that instead.</li>
+      </ul>
+    </section>
+
+    <section class="howto-section">
+      <h2 class="section-title">What is the AI actually doing?</h2>
+      <p class="story-text">The AI only writes the words of the puzzles. The quest game, the answer-checking, the hints, and the certificate are all built into Quest Forge. The app also checks the AI’s reply and cleans it up, so a small mistake will not break your quest.</p>
+    </section>
+
+    <section class="howto-section">
+      <h2 class="section-title">Tips for great quests</h2>
+      <ul class="howto-list">
+        <li>Keep the topic focused — one text or one part of a unit works best.</li>
+        <li>Paste your own extract or task sheet so the puzzles use <em>your</em> material.</li>
+        <li>Five to six stations is plenty for one lesson.</li>
+        <li>Play it yourself once before you share it.</li>
+        <li>Add a few alternative answers in the preview (for example, British and American spellings).</li>
+      </ul>
+    </section>
+
+    <section class="howto-section">
+      <h2 class="section-title">If something goes wrong</h2>
+      <ul class="howto-list">
+        <li><strong>“The AI added extra words.”</strong> That is fine — the app removes them automatically.</li>
+        <li><strong>“The reply would not build.”</strong> Use <strong>Copy a fix-up prompt</strong> and paste it back to the AI.</li>
+        <li><strong>“The share link is very long.”</strong> Your quest is big — share the downloaded file instead.</li>
+        <li><strong>“A correct answer was marked wrong.”</strong> Open the station in the preview and add that answer to <strong>Accepted answers</strong>.</li>
+      </ul>
+    </section>
+
+    <div class="howto-cta">
+      <a class="btn btn--primary wax-btn" href="build.html">Build a quest now</a>
+      <a class="btn btn--ghost" href="play.html?id=omam-locked-bunkhouse">See an example</a>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script>
+    (function () {
+      var KEY = "ishQuest.prefs.v1";
+      function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
+      function save(p) { try { localStorage.setItem(KEY, JSON.stringify(p)); } catch (e) {} }
+      function apply(p) {
+        var d = document.documentElement.dataset;
+        d.theme = p.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        d.font = p.font === "dyslexic" ? "dyslexic" : "standard";
+        d.contrast = p.contrast ? "high" : "normal";
+        d.size = p.biggerText ? "big" : "normal";
+      }
+      function sync() {
+        var p = load();
+        var theme = document.documentElement.dataset.theme;
+        var t = document.querySelector('[data-pref="theme"]');
+        if (t) t.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+        var f = document.querySelector('[data-pref="font"]');
+        if (f) f.setAttribute("aria-pressed", String(p.font === "dyslexic"));
+        var b = document.querySelector('[data-pref="biggerText"]');
+        if (b) b.setAttribute("aria-pressed", String(!!p.biggerText));
+      }
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest("[data-pref]");
+        if (!btn) return;
+        var p = load();
+        var k = btn.getAttribute("data-pref");
+        if (k === "theme") p.theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        else if (k === "font") p.font = p.font === "dyslexic" ? "standard" : "dyslexic";
+        else if (k === "biggerText") p.biggerText = !p.biggerText;
+        save(p);
+        apply(p);
+        sync();
+      });
+      apply(load());
+      sync();
+    })();
+  </script>
+</body>
+</html>

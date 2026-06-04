@@ -838,3 +838,65 @@ input:focus, textarea:focus, select:focus { box-shadow: var(--shadow-sm); }
     scroll-behavior: auto !important;
   }
 }
+
+/* --- School logo (ISH) — light "bookplate" so the colour mark reads in light AND dark --- */
+.brand-plate {
+  display: inline-flex;
+  align-items: center;
+  background: #f4ecd8;
+  border: 2px solid #2a2012;
+  border-radius: 8px;
+  padding: 0.4rem 0.7rem;
+  box-shadow: 4px 4px 0 rgba(20, 14, 8, 0.35);
+  margin: 0 0 1rem;
+  width: max-content;
+  max-width: 100%;
+}
+.brand-plate__img {
+  display: block;
+  height: 38px;
+  width: auto;
+  max-width: 100%;
+}
+.certificate__logo {
+  display: block;
+  height: 46px;
+  width: auto;
+  margin: 0 auto 0.7rem;
+}
+@media (max-width: 640px) {
+  .brand-plate__img { height: 30px; }
+}
+
+/* --- How-to guide page --- */
+.howto-steps {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin: 1.5rem 0 2rem;
+  list-style: none;
+  padding: 0;
+}
+.howto-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: var(--seal-red);
+  color: #f7eedd;
+  font-weight: 800;
+  font-size: 1.35rem;
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  margin-bottom: 0.6rem;
+}
+.howto-section { margin-top: 1.75rem; }
+.howto-list > li { margin: 0.55rem 0; }
+.howto-cta { margin: 2rem 0 1rem; }
+.howto-callout {
+  border-left: 5px solid var(--brass);
+  padding: 0.4rem 0 0.4rem 1rem;
+  margin: 1rem 0;
+}
