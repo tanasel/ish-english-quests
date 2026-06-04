@@ -1,0 +1,104 @@
+# Quest Forge
+
+A static, no-build web app for the **English department of the International School of The Hague (ISH)**.
+
+## What it is
+
+Quest Forge turns a unit or task description into a playable **escape room** or **treasure hunt** made of English-skills puzzles (decoding, vocabulary, inference, sequencing, attribution, spelling, comprehension). Teachers describe their unit in a short wizard; the app writes an AI prompt; the teacher pastes that prompt into their school AI (ChatGPT, Gemini, or Claude), pastes the JSON reply back, and the app validates, previews, and shares it. Students open a link and play solo in the browser.
+
+There is **no API key, no server, and no login**. The whole app is plain HTML, CSS, and vanilla JavaScript that runs from static files and deploys to GitHub Pages. A step-by-step teacher guide for non-technical staff lives in [`BUILD-A-QUEST.md`](BUILD-A-QUEST.md).
+
+## Features
+
+- **Two game modes** — *escape room* (solve stations in order to open a final lock) and *treasure hunt* (open stations in any order, collect a letter from each, spell the treasure word). One station model powers both.
+- **11 English puzzle types** — `cipher`, `vocab-lock`, `attribution`, `sequence`, `fill-blank`, `anagram`, `comprehension`, `hidden-word`, `riddle`, `spelling-lock`, `odd-one-out`.
+- **Copy-paste AI bridge** — the app builds the prompt and validates the reply; the AI work happens in the teacher's own chat tool. No keys, nothing is sent from the app.
+- **Auto-repair on paste** — strips code fences and stray prose, extracts the JSON, fixes smart quotes and trailing commas, fills missing fields, and flags any station it cannot render.
+- **Solo offline play** — once a page has loaded, a share link decodes and plays with zero network calls.
+- **Accessibility & reading support** — dark mode, dyslexia font (Atkinson Hyperlegible), bigger-text, and high-contrast toggles; full keyboard play; ARIA live regions; reduced-motion honoured; **no timers anywhere**.
+- **Share & certificate** — share a quest by link or downloadable file, and let students print a personalised completion certificate (name typed in, never stored).
+
+## Run locally
+
+```sh
+node dev-server.cjs
+```
+
+Then open **http://localhost:4180/**.
+
+The dev server only serves static files — there is no build step and nothing to install. You can also open the `.html` files directly, but the local server is recommended so that the `fetch` of `quests/index.json` works.
+
+## File structure
+
+**Pages**
+
+- `index.html` — launcher / home: lists demo and curated quests, plus "Build a quest" / "Open a quest".
+- `build.html` — teacher builder wizard.
+- `play.html` — student player.
+
+**JavaScript modules** (each an IIFE that exposes one global)
+
+- `config.js` — `window.QUEST_CONFIG` (base path, optional gallery endpoint).
+- `schema.js` — `QuestSchema`: puzzle-type / mode / theme constants, `normalizeQuest`, `normalizeStation`, `validatePackText` (the auto-repair pipeline).
+- `answer.js` — `QuestAnswer`: the single shared answer matcher (`normalizeAns`, `checkAnswer`).
+- `store.js` — `QuestStore`: prefs, progress, and saved quests in versioned `localStorage` (with in-memory fallback).
+- `share.js` — `QuestShare`: `encodePack` / `decodePack` and URL-size info via `vendor/lz-string`.
+- `prompt.js` — `QuestPrompt`: `buildPrompt(inputs)` builds the full AI prompt.
+- `puzzles.js` — `QuestPuzzles`: render registry for the 11 puzzle types.
+- `player.js` — `QuestPlayer`: escape / hunt engine — hints, reveal, score, win, certificate.
+- `builder.js` — `QuestBuilder`: the wizard (describe, generate prompt, paste, validate, preview, share / export / save).
+- `launcher.js` — `QuestLauncher`: home-page logic.
+- `data.js` — `window.QUEST_SEEDS`: the two demo packs, embedded so the launcher works offline.
+
+**Content & assets**
+
+- `quests/index.json` — manifest of curated quests.
+- `quests/omam-locked-bunkhouse.json` — escape demo (*Of Mice and Men*).
+- `quests/poets-lost-map.json` — treasure-hunt demo (poetic devices).
+- `styles.css` — the "Cartographer's Library" theme (light + dark).
+- `vendor/lz-string.min.js` — vendored compression for share links.
+- `tests/quest.test.cjs` — Playwright / Node test placeholder.
+- `dev-server.cjs` — tiny static file server.
+
+## Deploy
+
+The app deploys to **GitHub Pages** automatically.
+
+- `.github/workflows/deploy.yml` runs on every push to `main` and publishes the repo as a Pages site (atomic deploy, so there is no 404 window during a rebuild).
+- `.nojekyll` is present so Pages serves the files as-is.
+
+Sharing a quest does **not** require deployment:
+
+- **Share link** — the whole pack is compressed into the URL (`play.html#q=...`), so any copy of the site can open it.
+- **File fallback** — for large quests the builder steers you to download the `.json` file; students open it from the player's "Open a quest" file picker.
+
+## Quest-pack schema (`ish-quest@1`)
+
+Each quest is one JSON object with four parts:
+
+- **`meta`** — `id` (kebab-case, also the progress key), `title`, `unit`, `subject`, `year`, `mode` (`escape` | `hunt`), `theme`, `author`, `createdAt`.
+- **`story`** — `intro` (and optional `introTitle`) shown at the start, `outro` shown on winning.
+- **`settings`** — `hints` (`off` | `free` | `costed`), `hintPenalty`, `startScore`, `shuffleHunt`, `showProgress`, `certificate`, `fontDefault`, and (hunt only) `finalCode`. `timer` is always forced to `false`.
+- **`stations`** — an array of puzzles. Each station has an `id`, `name`, optional `icon`, `narrative`, a `type` from the enum below, type-specific `content`, an `answer`, an `acceptedAnswers` list (always includes `answer`), a `match` mode, three progressive `hints`, a `reveal` shown on solving, a hunt `reward.fragment` (one letter), and `points`.
+
+**Puzzle-type enum:**
+
+```
+cipher · vocab-lock · attribution · sequence · fill-blank · anagram
+comprehension · hidden-word · riddle · spelling-lock · odd-one-out
+```
+
+**Match modes:** `normalized` (default, forgiving of case and punctuation) · `exact` (letter-exact, for spelling) · `contains` · `set` (all required, any order) · `ordered` (for sequences).
+
+The builder and player both run every pack through `normalizeQuest`, so a pasted or shared pack is repaired and made safe before it plays.
+
+## Privacy
+
+- **No backend, no database, no logins.** Everything runs in the browser.
+- **No student PII.** The certificate name is typed in at print time and is never saved or transmitted.
+- Preferences and game progress live in **`localStorage` only**, on the student's own device.
+- All quest content (from an AI paste or a `#q=` link) is treated as untrusted: the app builds the page with `textContent`, never `innerHTML`, and only allows `http` / `https` links, so a tampered pack cannot run scripts.
+
+## Credits
+
+Built for the **ISH English department**. Theme: "Cartographer's Library." Fonts: Fraunces, JetBrains Mono, and Atkinson Hyperlegible (Google Fonts). Share-link compression by [lz-string](https://github.com/pieroxy/lz-string). No tracking, no analytics, no third-party calls at play time.

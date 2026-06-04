@@ -1,0 +1,29 @@
+[
+  {
+    "id": "omam-locked-bunkhouse",
+    "title": "The Locked Bunkhouse",
+    "unit": "Of Mice and Men — dreams, loneliness, friendship",
+    "grade": "Year 9 (MYP 4)",
+    "mode": "escape",
+    "theme": "detective",
+    "file": "omam-locked-bunkhouse.json"
+  },
+  {
+    "id": "poets-lost-map",
+    "title": "The Poet's Lost Map",
+    "unit": "Poetic devices and figurative language",
+    "grade": "Year 8 (MYP 3)",
+    "mode": "hunt",
+    "theme": "pirate",
+    "file": "poets-lost-map.json"
+  },
+  {
+    "id": "orators-sealed-archive",
+    "title": "The Orator's Sealed Archive",
+    "unit": "Persuasive writing & rhetoric — ethos, pathos, logos and rhetorical devices",
+    "grade": "Year 10 (MYP 5)",
+    "mode": "escape",
+    "theme": "detective",
+    "file": "orators-sealed-archive.json"
+  }
+]

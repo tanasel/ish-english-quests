@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-font="standard" data-contrast="normal">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Quest Forge for the ISH English department: build and play browser-based English escape rooms and treasure hunts." />
+  <title>Quest Forge · ISH English</title>
+  <script>
+    (function () {
+      try {
+        var raw = localStorage.getItem("ishQuest.prefs.v1");
+        var p = raw ? JSON.parse(raw) : {};
+        var theme = p.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.font = p.font === "dyslexic" ? "dyslexic" : "standard";
+        document.documentElement.dataset.contrast = p.contrast ? "high" : "normal";
+        document.documentElement.dataset.size = p.biggerText ? "big" : "normal";
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght@9..144,600..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=1" />
+  <script src="config.js?v=1"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to quests</a>
+  <div id="launcherRoot"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="vendor/lz-string.min.js?v=1"></script>
+  <script src="schema.js?v=1"></script>
+  <script src="store.js?v=1"></script>
+  <script src="share.js?v=1"></script>
+  <script src="data.js?v=1"></script>
+  <script src="launcher.js?v=1"></script>
+</body>
+</html>
