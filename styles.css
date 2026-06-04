@@ -202,9 +202,8 @@ button, input, textarea, select { font: inherit; }
 }
 .masthead__inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 36px;
+  grid-template-columns: 1fr;
+  gap: 22px;
 }
 .quest-head {
   display: grid;
@@ -232,10 +231,12 @@ button, input, textarea, select { font: inherit; }
   margin: 0;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(3rem, 8vw, 6.5rem);
-  line-height: 0.95;
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  line-height: 0.98;
   letter-spacing: 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  hyphens: none;
+  text-wrap: balance;
 }
 .quest-title { font-size: clamp(2.6rem, 6vw, 5.4rem); }
 .lede, .story-text {
@@ -250,7 +251,7 @@ button, input, textarea, select { font: inherit; }
   flex-wrap: wrap;
   gap: 12px;
 }
-.masthead__actions { justify-content: flex-end; }
+.masthead__actions { justify-content: flex-start; }
 .quest-controls { margin-top: 6px; }
 .control-btn { padding-inline: 13px; }
 .control-btn[aria-pressed="true"], .chip[aria-pressed="true"] {
